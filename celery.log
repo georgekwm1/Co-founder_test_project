@@ -1,0 +1,34 @@
+[2026-05-12 20:01:48,179: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-05-12 20:01:48,207: INFO/MainProcess] mingle: searching for neighbors
+[2026-05-12 20:01:49,255: INFO/MainProcess] mingle: all alone
+[2026-05-12 20:01:49,500: INFO/MainProcess] celery@DESKTOP-KH3MCGK ready.
+[2026-05-12 20:01:49,506: INFO/MainProcess] Task app.tasks.send_reset_email[05afe11c-ee57-417a-9b87-c978859f8977] received
+[2026-05-12 20:01:54,590: ERROR/ForkPoolWorker-31] Failed to send reset email to georgekwm1@gmail.com: (550, b'5.7.1 "From:" header does not match the sender\'s domain')
+[2026-05-12 20:01:54,619: INFO/ForkPoolWorker-31] Task app.tasks.send_reset_email[05afe11c-ee57-417a-9b87-c978859f8977] succeeded in 5.108811542013427s: None
+[2026-05-12 20:02:12,248: INFO/MainProcess] beat: Starting...
+[2026-05-12 20:15:47,765: INFO/MainProcess] beat: Starting...
+[2026-05-12 20:15:55,346: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-05-12 20:15:55,374: INFO/MainProcess] mingle: searching for neighbors
+[2026-05-12 20:15:56,425: INFO/MainProcess] mingle: all alone
+[2026-05-12 20:15:56,542: INFO/MainProcess] celery@DESKTOP-KH3MCGK ready.
+[2026-05-12 20:18:09,707: INFO/MainProcess] Task app.tasks.send_reset_email[7ecf8714-0dc4-413a-ac26-a83c1f9ec9bc] received
+[2026-05-12 20:18:15,003: ERROR/ForkPoolWorker-31] Failed to send reset email to georgekwm1@gmail.com: (550, b'5.7.1 "From:" header does not match the sender\'s domain')
+[2026-05-12 20:18:15,034: INFO/ForkPoolWorker-31] Task app.tasks.send_reset_email[7ecf8714-0dc4-413a-ac26-a83c1f9ec9bc] succeeded in 5.321911884006113s: None
+[2026-05-12 20:48:25,026: INFO/MainProcess] Task app.tasks.send_reset_email[8930775a-d06d-49c2-a1e9-11e629f1776c] received
+[2026-05-12 20:48:30,308: ERROR/ForkPoolWorker-31] Failed to send reset email to georgekwm1@gmail.com: (550, b'5.7.1 "From:" header does not match the sender\'s domain')
+[2026-05-12 20:48:30,316: INFO/ForkPoolWorker-31] Task app.tasks.send_reset_email[8930775a-d06d-49c2-a1e9-11e629f1776c] succeeded in 5.281785319006303s: None
+[2026-05-12 20:49:26,178: INFO/MainProcess] beat: Starting...
+[2026-05-12 20:49:33,062: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-05-12 20:49:33,092: INFO/MainProcess] mingle: searching for neighbors
+[2026-05-12 20:49:34,149: INFO/MainProcess] mingle: all alone
+[2026-05-12 20:49:34,282: INFO/MainProcess] celery@DESKTOP-KH3MCGK ready.
+[2026-05-12 20:50:06,810: INFO/MainProcess] Task app.tasks.send_reset_email[7cd6bda3-4b31-41e6-9d34-af7ca93dc6aa] received
+[2026-05-12 20:50:06,817: INFO/ForkPoolWorker-31] Preparing to send reset email to georgekwm1@gmail.com with token 0b146fcd0e282a7b
+[2026-05-12 20:50:06,820: INFO/ForkPoolWorker-31] Email host: live.smtp.mailtrap.io, port: 587, user: api, sender: Email <hello@auditelligence.com>
+[2026-05-12 20:50:11,481: INFO/MainProcess] Task app.tasks.send_reset_email[ad312857-2d6f-4844-9d54-9cc5e538733a] received
+[2026-05-12 20:50:11,487: INFO/ForkPoolWorker-32] Preparing to send reset email to georgekwm1@gmail.com with token 2858f42dcf4b5ccf
+[2026-05-12 20:50:11,489: INFO/ForkPoolWorker-32] Email host: live.smtp.mailtrap.io, port: 587, user: api, sender: Email <hello@auditelligence.com>
+[2026-05-12 20:50:13,362: ERROR/ForkPoolWorker-31] Failed to send reset email to georgekwm1@gmail.com: (550, b'5.7.1 "From:" header does not match the sender\'s domain')
+[2026-05-12 20:50:13,393: INFO/ForkPoolWorker-31] Task app.tasks.send_reset_email[7cd6bda3-4b31-41e6-9d34-af7ca93dc6aa] succeeded in 6.576575234008487s: None
+[2026-05-12 20:50:16,931: ERROR/ForkPoolWorker-32] Failed to send reset email to georgekwm1@gmail.com: (550, b'5.7.1 "From:" header does not match the sender\'s domain')
+[2026-05-12 20:50:16,960: INFO/ForkPoolWorker-32] Task app.tasks.send_reset_email[ad312857-2d6f-4844-9d54-9cc5e538733a] succeeded in 5.47488612899906s: None
