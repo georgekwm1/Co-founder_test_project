@@ -7,6 +7,7 @@ from app.auth_utility import *
 from app.models import User, Question, Result
 from pydantic import BaseModel, EmailStr
 from app.tasks import send_reset_email
+from fastapi import BackgroundTasks
 import secrets
 import json
 
@@ -55,7 +56,7 @@ class AIInstructionsRequest(BaseModel):
 @app.post("/signup")
 async def signup(data: SignupRequest):
     try:
-        existing_user = await User.get(email=data.email)
+        existing_user = await User.filter(email=data.email).first()
         if existing_user:
             raise HTTPException(status_code=400, detail="Email already registered")
         hashed_password = hash_password(data.password)
@@ -66,16 +67,17 @@ async def signup(data: SignupRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 @app.post("/forgot-password")
-async def forgot_password(data: ForgotPasswordRequest):
+async def forgot_password(data: ForgotPasswordRequest, background_tasks: BackgroundTasks):
     try:
-        user = await User.get(email=data.email)
+        user = await User.filter(email=data.email).first()
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
         # Here you would generate a password reset token and send an email to the user
         token = secrets.token_hex(8)  # Replace with actual token generation logic
         user.reset_token = token
         await user.save()
-        send_reset_email.delay(data.email, token)
+        # send_reset_email.delay(data.email, token)
+        background_tasks.add_task(send_reset_email, data.email, token)
         return {"message": "Password reset instructions sent to your email"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -85,7 +87,7 @@ async def reset_password(data: ResetPasswordRequest):
     if data.new_password != data.confirm_password:
         raise HTTPException(status_code=400, detail="Passwords do not match")
     try:
-        user = await User.get(email=data.email)
+        user = await User.filter(email=data.email).first()
         if not user or user.reset_token != data.token:
             raise HTTPException(status_code=400, detail="Invalid token or email")
         user.password = hash_password(data.new_password)
@@ -98,7 +100,7 @@ async def reset_password(data: ResetPasswordRequest):
 @app.post("/login")
 async def login(data: LoginRequest):
     try:
-        user = await User.get(email=data.email)
+        user = await User.filter(email=data.email).first()
         if not user or not verify_password(data.password, user.password):
             raise HTTPException(status_code=400, detail="Incorrect email or password")
         access_token = create_access_token(data={"email": user.email})
@@ -154,3 +156,10 @@ async def search_history(current_user: User = Depends(get_current_user)):
             "results": [item for r in results for item in json.loads(r.answer)]
         })
     return {"history": history}
+
+# @app.delete("/clear_history")
+# async def clear_history(current_user: User = Depends(get_current_user)):
+#     questions = await Question.filter(user=current_user).all()
+#     for q in questions:
+#         await q.delete()
+#     return {"message": "Search history cleared"}

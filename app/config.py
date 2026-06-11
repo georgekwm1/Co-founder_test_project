@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
 
 class Settings(BaseSettings):
-    db_url: str
+    database_url: str
     api_key: str
     db_user: str
     db_password: str
